@@ -11,7 +11,7 @@ jobDsl {
                     git {
                         remote {
                             url('https://github.com/vasylky/jenkoo.git')
-                            branch('mфшт')
+                            branch('main')
                         }
                     }
                     scriptPath('Jenkinsfile')
