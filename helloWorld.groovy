@@ -14,7 +14,7 @@ pipelineJob('MyProjectPipeline') {
                     }
                     branch('${BRANCH_NAME}')
                 }
-                scriptPath('Jenkinsfile')
+                scriptPath('helloWorld.jenkinsfile')
             }
         }
     }
