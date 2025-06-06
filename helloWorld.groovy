@@ -1,17 +1,15 @@
-pipelineJob('hello-world-job') {
-    description('Проста hello world pipeline job')
-    
+pipelineJob('hello-pipeline-job') {
     definition {
         cpsScm {
             scm {
                 git {
                     remote {
-                        url('https://github.com/your-username/pipeline-repo.git')
+                        url('https://github.com/vasylky/jenkoo.git')
                     }
                     branch('main')
                 }
             }
-            scriptPath('Jenkinsfile')
+            scriptPath('helloWorld.jenkinsfile')  
         }
     }
 }
