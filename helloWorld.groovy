@@ -3,7 +3,7 @@ pipelineJob('MyProjectPipeline') {
     parameters {
         stringParam('PROJECT_NAME', 'MyProject', 'Name of the project')
         stringParam('VERSION', '1.0.0', 'Version of the project')
-        stringParam('BRANCH_NAME', 'main', 'Git branch to build')
+        choiceParam('BRANCH_NAME', ['main', 'feature/test-branch'], 'Git branch to build')
     }
     definition {
         cpsScm {
@@ -14,7 +14,7 @@ pipelineJob('MyProjectPipeline') {
                     }
                     branch('${BRANCH_NAME}')
                 }
-                scriptPath('helloWorld.jenkinsfile')
+                scriptPath('Jenkinsfile')
             }
         }
     }
