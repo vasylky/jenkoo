@@ -19,17 +19,17 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'echo Building ${params.PROJECT_NAME} version ${params.VERSION}...'
+                sh "echo Building ${params.PROJECT_NAME} version ${params.VERSION}..."
             }
         }
         stage('Test') {
             steps {
-                sh 'echo Running tests for ${params.PROJECT_NAME}...'
+                sh "echo Running tests for ${params.PROJECT_NAME}..."
             }
         }
         stage('Deploy') {
             steps {
-                sh 'echo Deploying ${params.PROJECT_NAME} version ${APP_VERSION}...'
+                sh "echo Deploying ${params.PROJECT_NAME} version ${APP_VERSION}..."
             }
         }
     }

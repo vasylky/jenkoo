@@ -13,7 +13,7 @@ pipelineJob('MyProjectPipeline') {
                         branch('main')
                     }
                 }
-                scriptPath('Jenkinsfile')
+                scriptPath('helloWorld.jenkinsfile')
             }
         }
     }
