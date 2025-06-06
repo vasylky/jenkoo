@@ -1,18 +1,22 @@
-pipelineJob('example-job') {
-    parameters {
-        stringParam('GREETING', 'Hello, Jenkins!', 'Повідомлення для виводу')
-    }
-    definition {
-        cpsScm {
-            scm {
-                git {
-                    remote {
-                        url('https://github.com/your-repo.git')
+jobDsl {
+    pipelineJob('MyProjectPipeline') {
+        description('Pipeline for MyProject')
+        parameters {
+            stringParam('PROJECT_NAME', 'MyProject', 'Name of the project')
+            stringParam('VERSION', '1.0.0', 'Version of the project')
+        }
+        definition {
+            cpsScm {
+                scm {
+                    git {
+                        remote {
+                            url('https://github.com/vasylky/jenkoo.git')
+                            branch('mфшт')
+                        }
                     }
-                    branch('main')
+                    scriptPath('Jenkinsfile')
                 }
             }
-            scriptPath('helloWorld.jenkinsfile')
         }
     }
 }

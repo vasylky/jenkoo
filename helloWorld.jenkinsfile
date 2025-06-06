@@ -1,10 +1,22 @@
 pipeline {
     agent any
+    environment {
+        APP_VERSION = ''
+    }
     stages {
-        stage('Print greeting') {
+        stage('Checkout') {
             steps {
-                echo "Greeting is: ${params.GREETING}"
+                checkout scm
             }
         }
+       . stage('Process Parameters') {
+            steps {
+                script {
+                    println "Parameters received: PROJECT_NAME = ${params.PROJECT_NAME}, VERSION = ${params.VERSION}"
+                    APP_VERSION = "${params.VERSION}.${env.BUILD_NUMBER}"
+                }
+            }
+        }
+        
     }
 }
