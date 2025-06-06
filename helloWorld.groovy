@@ -3,6 +3,7 @@ pipelineJob('MyProjectPipeline') {
     parameters {
         stringParam('PROJECT_NAME', 'MyProject', 'Name of the project')
         stringParam('VERSION', '1.0.0', 'Version of the project')
+        stringParam('BRANCH_NAME', 'main', 'Git branch to build')
     }
     definition {
         cpsScm {
@@ -10,8 +11,8 @@ pipelineJob('MyProjectPipeline') {
                 git {
                     remote {
                         url('https://github.com/vasylky/jenkoo.git')
-                        branch('main')
                     }
+                    branch('${BRANCH_NAME}')
                 }
                 scriptPath('helloWorld.jenkinsfile')
             }

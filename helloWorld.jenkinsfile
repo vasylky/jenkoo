@@ -6,30 +6,32 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                checkout scm
+                checkout([$class: 'GitSCM',
+                          branches: [[name: "${params.BRANCH_NAME}"]],
+                          userRemoteConfigs: [[url: 'https://github.com/vasylky/jenkoo.git']]])
             }
         }
         stage('Process Parameters') {
             steps {
                 script {
-                    println "Parameters received: PROJECT_NAME = ${params.PROJECT_NAME}, VERSION = ${params.VERSION}"
+                    println "Parameters received: PROJECT_NAME = ${params.PROJECT_NAME}, VERSION = ${params.VERSION}, BRANCH_NAME = ${params.BRANCH_NAME}"
                     APP_VERSION = "${params.VERSION}.${env.BUILD_NUMBER}"
                 }
             }
         }
         stage('Build') {
             steps {
-                sh "echo Building ${params.PROJECT_NAME} version ${params.VERSION}..."
+                sh "echo Building ${params.PROJECT_NAME} version ${params.VERSION} on branch ${params.BRANCH_NAME}..."
             }
         }
         stage('Test') {
             steps {
-                sh "echo Running tests for ${params.PROJECT_NAME}..."
+                sh "echo Running tests for ${params.PROJECT_NAME} on branch ${params.BRANCH_NAME}..."
             }
         }
         stage('Deploy') {
             steps {
-                sh "echo Deploying ${params.PROJECT_NAME} version ${APP_VERSION}..."
+                sh "echo Deploying ${params.PROJECT_NAME} version ${APP_VERSION} on branch ${params.BRANCH_NAME}..."
             }
         }
     }
