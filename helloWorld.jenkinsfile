@@ -1,9 +1,9 @@
 pipeline {
     agent any
     stages {
-        stage('Hello') {
+        stage('Print greeting') {
             steps {
-                echo 'Hello from Jenkins Pipeline!'
+                echo "Greeting is: ${params.GREETING}"
             }
         }
     }
