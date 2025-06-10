@@ -1,14 +1,6 @@
 pipeline {
     agent any
 
-    parameters {
-        string(name: 'PROJECT_NAME', defaultValue: 'test-project', description: 'Назва проєкту')
-        string(name: 'VERSION', defaultValue: '1.0', description: 'Версія застосунку')
-        string(name: 'BRANCH_NAME', defaultValue: 'main', description: 'Гілка Git')
-        string(name: 'NUM1', defaultValue: '5', description: 'Перше число')
-        string(name: 'NUM2', defaultValue: '10', description: 'Друге число')
-    }
-
     environment {
         APP_VERSION = ''
     }
