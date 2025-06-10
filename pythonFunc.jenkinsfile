@@ -1,0 +1,47 @@
+pipeline {
+    agent any
+
+    parameters {
+        string(name: 'PROJECT_NAME', defaultValue: 'test-project', description: 'Назва проєкту')
+        string(name: 'VERSION', defaultValue: '1.0', description: 'Версія застосунку')
+        string(name: 'BRANCH_NAME', defaultValue: 'main', description: 'Гілка Git')
+        string(name: 'NUM1', defaultValue: '5', description: 'Перше число')
+        string(name: 'NUM2', defaultValue: '10', description: 'Друге число')
+    }
+
+    environment {
+        APP_VERSION = ''
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout([$class: 'GitSCM',
+                          branches: [[name: "${params.BRANCH_NAME}"]],
+                          userRemoteConfigs: [[url: 'https://github.com/vasylky/jenkoo.git']]])
+            }
+        }
+
+        stage('Process Parameters') {
+            steps {
+                script {
+                    echo "Parameters received: PROJECT_NAME = ${params.PROJECT_NAME}, VERSION = ${params.VERSION}, BRANCH_NAME = ${params.BRANCH_NAME}"
+                    env.APP_VERSION = "${params.VERSION}.${env.BUILD_NUMBER}"
+                }
+            }
+        }
+
+        stage('Function for test') {
+            steps {
+                script {
+                    def result = addNumbers(params.NUM1.toInteger(), params.NUM2.toInteger())
+                    echo "Sum of ${params.NUM1} and ${params.NUM2} is: ${result}"
+                }
+            }
+        }
+    }
+}
+
+def addNumbers(int a, int b) {
+    return a + b
+}
