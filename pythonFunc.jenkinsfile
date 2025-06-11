@@ -17,7 +17,7 @@ pipeline {
         stage('Process Parameters') {
             steps {
                 script {
-                    echo "Parameters received loolll: PROJECT_NAME = ${params.PROJECT_NAME}, VERSION = ${params.VERSION}, BRANCH_NAME = ${params.BRANCH_NAME}"
+                    echo "Parameters received loolll123: PROJECT_NAME = ${params.PROJECT_NAME}, VERSION = ${params.VERSION}, BRANCH_NAME = ${params.BRANCH_NAME}"
                     env.APP_VERSION = "${params.VERSION}.${env.BUILD_NUMBER}"
                 }
             }
