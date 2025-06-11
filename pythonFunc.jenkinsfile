@@ -19,6 +19,7 @@ pipeline {
                 script {
                     echo "Parameters received loolll123: PROJECT_NAME = ${params.PROJECT_NAME}, VERSION = ${params.VERSION}, BRANCH_NAME = ${params.BRANCH_NAME}"
                     env.APP_VERSION = "${params.VERSION}.${env.BUILD_NUMBER}"
+                    echo "Application version set to: ${env.APP_VERSION}"
                 }
             }
         }
@@ -31,9 +32,21 @@ pipeline {
                 }
             }
         }
+        stage('Function for test2') {
+            steps {
+                script {
+                    def result = subtractNumbers(params.NUM1.toInteger(), params.NUM2.toInteger())
+                    echo "Subtraction of ${params.NUM1} and ${params.NUM2} is: ${result}"
+                }
+            }
+        }
     }
 }
 
 def addNumbers(int a, int b) {
     return a + b
+}
+
+def subtractNumbers(int a, int b) {
+    return a - b
 }
