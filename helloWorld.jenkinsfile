@@ -17,6 +17,11 @@ pipeline {
                     println "Parameters received: PROJECT_NAME = ${params.PROJECT_NAME}, VERSION = ${params.VERSION}, BRANCH_NAME = ${params.BRANCH_NAME}"
                     APP_VERSION = "${params.VERSION}.${env.BUILD_NUMBER}"
                 }
+
+                
+
+
+                
             }
         }
 
