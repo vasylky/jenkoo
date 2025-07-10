@@ -4,6 +4,11 @@ pipelineJob('MyProjectPipeline') {
         stringParam('PROJECT_NAME', 'MyProject', 'Name of the project')
         stringParam('VERSION', '1.0.0', 'Version of the project')
         choiceParam('BRANCH_NAME', ['main', 'feature/test'], 'Git branch to build')
+
+
+
+
+        
     }
     definition {
         cpsScm {
