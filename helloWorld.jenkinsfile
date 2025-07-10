@@ -19,6 +19,17 @@ pipeline {
                 }
             }
         }
+
+
+
+
+
+
+
+
+
+
+
         stage('Build') {
             steps {
                 sh "echo Building ${params.PROJECT_NAME} version ${params.VERSION} on branch ${params.BRANCH_NAME}..."
