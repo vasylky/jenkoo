@@ -9,6 +9,11 @@ pipelineJob('MyProjectPipeline') {
         cpsScm {
             scm {
                 git {
+
+
+
+
+                    
                     remote {
                         url('https://github.com/vasylky/jenkoo.git')
                     }
