@@ -12,6 +12,15 @@ pipelineJob('MyProjectPipeline') {
                     remote {
                         url('https://github.com/vasylky/jenkoo.git')
                     }
+
+
+
+
+
+
+
+
+                    
                     branch('${BRANCH_NAME}')
                 }
                 scriptPath('helloWorld.jenkinsfile')
