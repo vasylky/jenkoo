@@ -45,5 +45,10 @@ pipeline {
                 sh "echo Deploying ${params.PROJECT_NAME} version ${APP_VERSION} on branch ${params.BRANCH_NAME}..."
             }
         }
+        stage('Dinax') {
+            steps {
+                sh "echo Deploying ${params.PROJECT_NAME} version ${APP_VERSION} on branch ${params.BRANCH_NAME}..."
+            }
+        }
     }
 }
