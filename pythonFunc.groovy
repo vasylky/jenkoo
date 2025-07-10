@@ -6,6 +6,7 @@ pipelineJob('MyPythonFunc') {
         choiceParam('BRANCH_NAME', ['main', 'feature/test'], 'Git branch to build')
         stringParam('NUM1', '5', 'First number')
         stringParam('NUM2', '10', 'Second number')
+        stringParam('NUM3', '88', 'Third number')
     }
     definition {
         cpsScm {
