@@ -7,7 +7,7 @@ pipelineJob('MyProjectPipeline') {
 
 
 
-
+    pruvitiq1
         
     }
     definition {
